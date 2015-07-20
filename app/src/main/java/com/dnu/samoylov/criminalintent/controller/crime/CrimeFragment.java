@@ -1,4 +1,4 @@
-package com.dnu.samoylov.criminalintent.controller;
+package com.dnu.samoylov.criminalintent.controller.crime;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
