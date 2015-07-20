@@ -1,8 +1,8 @@
 package com.dnu.samoylov.criminalintent.controller.crimelist;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -11,6 +11,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dnu.samoylov.criminalintent.R;
+import com.dnu.samoylov.criminalintent.controller.crime.CrimeActivity;
+import com.dnu.samoylov.criminalintent.controller.crime.CrimeFragment;
 import com.dnu.samoylov.criminalintent.model.Crime;
 import com.dnu.samoylov.criminalintent.model.CrimeLab;
 
@@ -32,8 +34,17 @@ public class CrimeListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView listView, View view, int position, long id) {
-        final Crime c = (Crime) listView.getItemAtPosition(position);
-        Log.d(TAG, c.getTitle() + " was clicked");
+        final Crime crime = (Crime) listView.getItemAtPosition(position);
+
+        Intent intent = new Intent(getActivity(), CrimeActivity.class);
+        intent.putExtra(CrimeFragment.EXTRA_CRIME_ID, crime.getId());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((CrimeAdapter)getListAdapter()).notifyDataSetChanged();
     }
 
     private class CrimeAdapter extends ArrayAdapter<Crime> {
