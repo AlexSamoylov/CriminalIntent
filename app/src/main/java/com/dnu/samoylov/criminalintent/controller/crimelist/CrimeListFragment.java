@@ -11,8 +11,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.dnu.samoylov.criminalintent.R;
-import com.dnu.samoylov.criminalintent.controller.crime.CrimeActivity;
 import com.dnu.samoylov.criminalintent.controller.crime.CrimeFragment;
+import com.dnu.samoylov.criminalintent.controller.crime.CrimePagerActivity;
 import com.dnu.samoylov.criminalintent.model.Crime;
 import com.dnu.samoylov.criminalintent.model.CrimeLab;
 
@@ -36,7 +36,7 @@ public class CrimeListFragment extends ListFragment {
     public void onListItemClick(ListView listView, View view, int position, long id) {
         final Crime crime = (Crime) listView.getItemAtPosition(position);
 
-        Intent intent = new Intent(getActivity(), CrimeActivity.class);
+        Intent intent = new Intent(getActivity(), CrimePagerActivity.class);
         intent.putExtra(CrimeFragment.EXTRA_CRIME_ID, crime.getId());
         startActivity(intent);
     }
